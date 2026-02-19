@@ -14,7 +14,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <langchain4j.version>1.11.0-beta19-SNAPSHOT</langchain4j.version>
+        <langchain4j.stable.version>1.11.0</langchain4j.stable.version>
+        <langchain4j.experimental.version>1.11.0-beta19</langchain4j.experimental.version>
         <drools.version>10.1.0</drools.version>
         <junit.version>5.10.1</junit.version>
     </properties>
@@ -24,7 +25,7 @@
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-agentic</artifactId>
-            <version>${langchain4j.version}</version>
+            <version>${langchain4j.experimental.version}</version>
         </dependency>
 
         <!-- Drools Dependencies -->
@@ -60,6 +61,12 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.24.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-ollama</artifactId>
+            <version>${langchain4j.stable.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
