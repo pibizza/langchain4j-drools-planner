@@ -9,7 +9,6 @@ import dev.langchain4j.agentic.patterns.drools.TestAgents.TechnicalExpert;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.ollama.OllamaChatModel;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * This test assumes Ollama is running locally with a model available.
  * Run with: mvn test -Dollama.model=llama3.2
  */
-@EnabledIfSystemProperty(named = "ollama.model", matches = ".+")
 class DroolsPlannerExampleTest {
 
     private static ChatModel ollamaModel() {
