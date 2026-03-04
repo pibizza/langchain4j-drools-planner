@@ -63,16 +63,18 @@ class DroolsPlannerExampleTest {
 
 
             rule "Final decision"
+            salience 100
             when
-                StateEntry(key == "response", $response: value)
+                StateEntry(key == "response", value != null, $response: value)
                 $decision : AgentDecision()
             then
                 $decision.setResult($response);
                 $decision.setDone(true);
             end
-            
+
             rule "Route to Medical Expert"
             when
+                not StateEntry(key == "response")
                 StateEntry(key == "category", value == "MEDICAL")
                 AgentCategory(categoryName == "domain", categoryValue == "medical", $agent : agentName)
                 $decision : AgentDecision()
@@ -82,6 +84,7 @@ class DroolsPlannerExampleTest {
 
             rule "Route to Legal Expert"
             when
+                not StateEntry(key == "response")
                 StateEntry(key == "category", value == "LEGAL")
                 AgentCategory(categoryName == "domain", categoryValue == "legal", $agent : agentName)
                 $decision : AgentDecision()
@@ -91,6 +94,7 @@ class DroolsPlannerExampleTest {
 
             rule "Route to Technical Expert"
             when
+                not StateEntry(key == "response")
                 StateEntry(key == "category", value == "TECHNICAL")
                 AgentCategory(categoryName == "domain", categoryValue == "technical", $agent : agentName)
                 $decision : AgentDecision()
