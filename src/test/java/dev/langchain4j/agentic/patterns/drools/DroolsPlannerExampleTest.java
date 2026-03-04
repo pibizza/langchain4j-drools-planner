@@ -61,6 +61,16 @@ class DroolsPlannerExampleTest {
             import dev.langchain4j.agentic.patterns.drools.StateEntry;
             import dev.langchain4j.agentic.patterns.drools.AgentDecision;
 
+
+            rule "Final decision"
+            when
+                StateEntry(key == "response", $response: value)
+                $decision : AgentDecision()
+            then
+                $decision.setResult($response);
+                $decision.setDone(true);
+            end
+            
             rule "Route to Medical Expert"
             when
                 StateEntry(key == "category", value == "MEDICAL")

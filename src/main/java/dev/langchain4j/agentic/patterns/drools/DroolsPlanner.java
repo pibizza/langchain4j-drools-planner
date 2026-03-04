@@ -15,6 +15,7 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.FactHandle;
 
+import dev.langchain4j.agentic.internal.AgentUtil;
 import dev.langchain4j.agentic.planner.Action;
 import dev.langchain4j.agentic.planner.AgentInstance;
 import dev.langchain4j.agentic.planner.AgenticSystemTopology;
@@ -69,7 +70,7 @@ public class DroolsPlanner implements Planner {
                 ));
             }
 
-            agentsByName.put(agentName, droolsAgent.agentInstance());
+            agentsByName.put(agentName, AgentUtil.agentToExecutor(droolsAgent.agentInstance()));
         }
 
     }

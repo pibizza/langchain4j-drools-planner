@@ -76,7 +76,6 @@ public class DroolsPlannerBuilder {
         var builder = AgenticServices.plannerBuilder()
                 .subAgents(agentInstances.toArray())
                 .planner(() -> planner);
-
         if (name != null) {
             builder.name(name);
         }
